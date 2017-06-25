@@ -31,7 +31,7 @@ public class Main extends Application{
 		initRootLayout();
 		showMainWindow();
 		
-		conn.setCon(conn.conectaBD("7986409", "notapassword"));
+		conn.setCon(conn.conectaBD("6436060", "a"));
 		if(conn.getCon() != null){
 			System.out.println("CONECTADO!");
 			try {
