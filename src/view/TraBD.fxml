@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main">
    <children>
       <TabPane layoutX="219.0" layoutY="133.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -21,14 +21,14 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ComboBox layoutX="14.0" layoutY="41.0" prefWidth="150.0" promptText="Modalidade" />
+                        <ComboBox fx:id="comboBoxModalidade" layoutX="14.0" layoutY="41.0" prefWidth="150.0" promptText="Modalidade" />
                         <Label layoutX="14.0" layoutY="14.0" text="BUSCAS" />
-                        <ComboBox layoutX="188.0" layoutY="41.0" prefWidth="150.0" promptText="Continente" />
-                        <TextField layoutX="351.0" layoutY="41.0" promptText="Nome" />
-                        <TextField layoutX="540.0" layoutY="41.0" promptText="# Atletas" />
-                        <Button layoutX="723.0" layoutY="41.0" mnemonicParsing="false" text="Buscar" />
-                        <Button layoutX="14.0" layoutY="78.0" mnemonicParsing="false" text="Inserir Nova Nação" />
-                        <TableView layoutX="14.0" layoutY="114.0" prefHeight="411.0" prefWidth="777.0">
+                        <ComboBox fx:id="comboBoxContinente" layoutX="188.0" layoutY="41.0" prefWidth="150.0" promptText="Continente" />
+                        <TextField fx:id="textFieldNome" layoutX="351.0" layoutY="41.0" promptText="Nome" />
+                        <TextField fx:id="textFieldNAtletas" layoutX="540.0" layoutY="41.0" promptText="# Atletas" />
+                        <Button fx:id="buttonBuscar" layoutX="723.0" layoutY="41.0" mnemonicParsing="false" text="Buscar" />
+                        <Button fx:id="buttonNovaNacao" layoutX="14.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleInsertNew" text="Inserir Nova Nação" />
+                        <TableView fx:id="tableViewTabela" layoutX="14.0" layoutY="114.0" prefHeight="411.0" prefWidth="777.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="Nome" />
                             <TableColumn prefWidth="116.0" text="Continente" />
@@ -38,8 +38,8 @@
                               <TableColumn prefWidth="172.0" text="Bandeira" />
                           </columns>
                         </TableView>
-                        <Button layoutX="14.0" layoutY="525.0" mnemonicParsing="false" text="Alterar" />
-                        <Button layoutX="718.0" layoutY="525.0" mnemonicParsing="false" text="Deletar">
+                        <Button fx:id="buttonAlterar" layoutX="14.0" layoutY="525.0" mnemonicParsing="false" text="Alterar" />
+                        <Button fx:id="buttonDelete" layoutX="718.0" layoutY="525.0" mnemonicParsing="false" text="Deletar">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -55,22 +55,22 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <TextField promptText="Modalidade" />
-                                    <TextField promptText="Médico" />
-                                    <TextField promptText="Treinador" />
-                                    <Button mnemonicParsing="false" text="Buscar Atletas" />
+                                    <TextField fx:id="textFieldModalidade" promptText="Modalidade" />
+                                    <TextField fx:id="textFieldMedico" promptText="Médico" />
+                                    <TextField fx:id="textFieldTreinador" promptText="Treinador" />
+                                    <Button fx:id="buttonBuscarAtletas" mnemonicParsing="false" text="Buscar Atletas" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <TextField promptText="Numero de Atletas" />
-                                    <TextField promptText="Nação" />
-                                    <Button mnemonicParsing="false" text="Buscar Atletas Atendidos" />
+                                    <TextField fx:id="textFieldNAtletasAtend" promptText="Numero de Atletas" />
+                                    <TextField fx:id="textFieldNacao" promptText="Nação" />
+                                    <Button fx:id="buttonBuscarAtletasAtendidos" mnemonicParsing="false" text="Buscar Atletas Atendidos" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Listar Treinadores Com Maior Numero de Atletas Irregulares" />
+                                    <Button fx:id="buttonBuscaGigante" mnemonicParsing="false" text="Listar Treinadores Com Maior Numero de Atletas Irregulares" />
                                  </children>
                               </HBox>
                            </children>

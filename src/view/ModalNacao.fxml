@@ -6,20 +6,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="320.0" prefWidth="480.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.121">
+<AnchorPane prefHeight="320.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModalNacaoController">
    <children>
-      <ComboBox layoutX="206.0" layoutY="14.0" prefHeight="26.0" prefWidth="171.0" />
-      <ComboBox layoutX="206.0" layoutY="50.0" prefHeight="26.0" prefWidth="171.0" />
-      <TextField layoutX="206.0" layoutY="84.0" />
-      <TextField layoutX="206.0" layoutY="119.0" />
-      <Button layoutX="14.0" layoutY="280.0" mnemonicParsing="false" text="Cancelar" />
-      <Button layoutX="402.0" layoutY="280.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="64.0" text="OK" />
+      <ComboBox fx:id="comboContinente" layoutX="206.0" layoutY="14.0" prefHeight="26.0" prefWidth="171.0" />
+      <ComboBox fx:id="comboModalidade" layoutX="206.0" layoutY="50.0" prefHeight="26.0" prefWidth="171.0" />
+      <TextField fx:id="textFieldNome" layoutX="206.0" layoutY="84.0" />
+      <TextField fx:id="textFieldHino" layoutX="206.0" layoutY="119.0" />
+      <Button fx:id="buttonCancel" layoutX="14.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar" />
+      <Button fx:id="buttonOK" layoutX="402.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleOK" prefHeight="26.0" prefWidth="64.0" text="OK" />
       <Label layoutX="14.0" layoutY="19.0" text="Continente" />
       <Label layoutX="14.0" layoutY="55.0" text="Modalidade Principal" />
       <Label layoutX="14.0" layoutY="89.0" text="Nome" />
       <Label layoutX="14.0" layoutY="124.0" text="Hino" />
       <Label layoutX="14.0" layoutY="152.0" text="Bandeira" />
-      <TextField layoutX="206.0" layoutY="155.0" />
+      <TextField fx:id="textFieldBandeira" layoutX="206.0" layoutY="155.0" />
    </children>
 </AnchorPane>
