@@ -46,7 +46,8 @@ public class TraBDController {
 	
 	public void load(DBConnection con) throws SQLException {
 		Statement st = con.createStatement();
-		ResultSet res = st.executeQuery("SELECT nome, continente, num_atletas, modalidade_principal, hino, bandeira FROM NACAO");
+		ResultSet res = st.executeQuery("select nc.nome, continente, num_atletas, md.nome, hino, bandeira from NACAO nc "
+											+ "join MODALIDADE md on md.codigo = nc.modalidade_principal");
 		try {
 			while (res.next()) {
 				data.add(new Nacao(res.getString(1), res.getString(2), res.getInt(3), res.getString(4), res.getString(5), res.getString(6)));
