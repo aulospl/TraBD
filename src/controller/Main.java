@@ -1,11 +1,13 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-import javafx.application.*;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -34,10 +36,21 @@ public class Main extends Application{
 		conn.setCon(DBConnection.conectaBD("6436060", "a"));
 		if(conn.getCon() != null){
 			System.out.println("CONECTADO!");
+			System.out.println("Atletas: ");
+			
 			try {
+				Statement stmt = conn.createStatement();
+				ResultSet res = stmt.executeQuery("SELECT passaporte, nome, altura, peso FROM ATLETA");
+				try {
+					while (res.next()) {
+						System.out.printf("%s\t%s\t%f\t%f\n", res.getString(1), res.getString(2), res.getFloat(3), res.getFloat(4));
+					}
+				} catch (SQLException e) {}
+				// res pode ou retornar false ou jogar SQLException quando acabar
+				// depende de implementação
+				
 				conn.desconectaBD();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
