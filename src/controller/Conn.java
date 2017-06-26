@@ -1,9 +1,5 @@
 package controller;
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -12,7 +8,7 @@ import java.sql.Statement;
 
 public class Conn {
     
-    private static Connection con;
+    private Connection con;
     
     
     public void setCon(Connection con){
