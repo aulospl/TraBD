@@ -1,15 +1,14 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import view.TraBDController;
 
 
 public class Main extends Application{
@@ -29,34 +28,26 @@ public class Main extends Application{
 		this.conn = new DBConnection();
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("TraBD");
+
+		conn.setCon(DBConnection.conectaBD("6436060", "a"));
 		
 		initRootLayout();
 		showMainWindow();
 		
-		conn.setCon(DBConnection.conectaBD("6436060", "a"));
-		if(conn.getCon() != null){
+		if(conn.getCon() != null)
 			System.out.println("CONECTADO!");
-			System.out.println("Atletas: ");
-			
-			try {
-				Statement stmt = conn.createStatement();
-				ResultSet res = stmt.executeQuery("SELECT passaporte, nome, altura, peso FROM ATLETA");
-				try {
-					while (res.next()) {
-						System.out.printf("%s\t%s\t%f\t%f\n", res.getString(1), res.getString(2), res.getFloat(3), res.getFloat(4));
-					}
-				} catch (SQLException e) {}
-				// res pode ou retornar false ou jogar SQLException quando acabar
-				// depende de implementação
-				
-				conn.desconectaBD();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
 		else
 			System.out.println("FALHA DE CONEXAO");
 		
+	}
+	
+	@Override
+	public void stop() {
+		try {
+			conn.desconectaBD();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
 	}
 	
 	public void initRootLayout(){
@@ -68,9 +59,10 @@ public class Main extends Application{
 			root = (AnchorPane) loader.load();
 			System.out.println("teste 2");
 			
-			
+			TraBDController cont = loader.getController();
+			cont.load(conn);
 		}
-		catch(IOException e){
+		catch(IOException | SQLException e){
 			e.printStackTrace();
 		}
 	}

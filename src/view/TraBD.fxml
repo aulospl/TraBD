@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="600.0" minWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TraBDController">
    <children>
       <TabPane layoutX="219.0" layoutY="133.0" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -28,14 +28,14 @@
                         <TextField layoutX="540.0" layoutY="41.0" promptText="# Atletas" />
                         <Button layoutX="723.0" layoutY="41.0" mnemonicParsing="false" text="Buscar" />
                         <Button layoutX="14.0" layoutY="78.0" mnemonicParsing="false" text="Inserir Nova Nação" />
-                        <TableView layoutX="14.0" layoutY="114.0" prefHeight="411.0" prefWidth="777.0">
+                        <TableView fx:id="table" layoutX="14.0" layoutY="114.0" prefHeight="411.0" prefWidth="777.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Nome" />
-                            <TableColumn prefWidth="116.0" text="Continente" />
-                              <TableColumn prefWidth="115.0" text="# Atletas" />
-                              <TableColumn prefWidth="123.0" text="Modalidade" />
-                              <TableColumn prefWidth="175.0" text="Hino" />
-                              <TableColumn prefWidth="172.0" text="Bandeira" />
+                            <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
+                            <TableColumn fx:id="colContinente" prefWidth="116.0" text="Continente" />
+                              <TableColumn fx:id="colNumAtletas" prefWidth="115.0" text="# Atletas" />
+                              <TableColumn fx:id="colModalidade" prefWidth="123.0" text="Modalidade" />
+                              <TableColumn fx:id="colHino" prefWidth="175.0" text="Hino" />
+                              <TableColumn fx:id="colBandeira" prefWidth="172.0" text="Bandeira" />
                           </columns>
                         </TableView>
                         <Button layoutX="14.0" layoutY="525.0" mnemonicParsing="false" text="Alterar" />
