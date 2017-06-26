@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 	
-	private Conn conn;
+	private DBConnection conn;
 	
 	private Stage primaryStage;
 	private AnchorPane root;
@@ -24,14 +24,14 @@ public class Main extends Application{
 	
 	@Override 
 	public void start(Stage primaryStage) {
-		this.conn = new Conn();
+		this.conn = new DBConnection();
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("TraBD");
 		
 		initRootLayout();
 		showMainWindow();
 		
-		conn.setCon(conn.conectaBD("6436060", "a"));
+		conn.setCon(DBConnection.conectaBD("6436060", "a"));
 		if(conn.getCon() != null){
 			System.out.println("CONECTADO!");
 			try {
