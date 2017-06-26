@@ -49,7 +49,6 @@ public class TraBDController {
 		ResultSet res = st.executeQuery("SELECT nome, continente, num_atletas, modalidade_principal, hino, bandeira FROM NACAO");
 		try {
 			while (res.next()) {
-				System.out.println(res.getString(1));
 				data.add(new Nacao(res.getString(1), res.getString(2), res.getInt(3), res.getString(4), res.getString(5), res.getString(6)));
 			}
 		} catch (SQLException ex) {
