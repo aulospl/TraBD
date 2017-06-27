@@ -22,6 +22,8 @@ public class Nacao {
 		this.bandeira = new SimpleStringProperty(bandeira);
 	}
 	
+	
+	
 	public StringProperty getNome() {
 		return nome;
 	}

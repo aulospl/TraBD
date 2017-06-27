@@ -5,11 +5,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import controller.DBConnection;
+import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Nacao;
 
 public class TraBDController {
@@ -57,5 +63,42 @@ public class TraBDController {
 			// Este try-catch só serve para parar o loop quando não houver mais resultados
 		}
 		System.out.println("fim loop");
+	}
+	
+	@FXML
+	private void handleNovaNacao() {
+		System.out.println("criando");
+		System.out.println("chicken");
+	    Nacao tempNacao = new Nacao("", "", 0, "", "", "");
+	    boolean okClicked = Main.showModalNacao(tempNacao);
+	    if (okClicked) {
+	        //Main.getPersonData().add(tempPerson);
+	    	//Adicionar na base de dados
+	    	System.out.println("OKEYZADO");
+	    }
+	}
+	
+	@FXML
+	private void handleEditarNacao() {
+		System.out.println("editando");
+	    Nacao tempNacao = new Nacao("", "", 0, "", "", "");
+	    boolean okClicked = Main.showModalNacao(tempNacao);
+	    if (okClicked) {
+	        //Main.getPersonData().add(tempPerson);
+	    	//Adicionar na base de dados
+	    	System.out.println("OKEYZADO");
+	    }
+	}
+	
+	@FXML
+	private void handleDeletarNacao() {
+		System.out.println("deletando");
+	    Nacao tempNacao = new Nacao("", "", 0, "", "", "");
+	    boolean okClicked = Main.showModalNacao(tempNacao);
+	    if (okClicked) {
+	        //Main.getPersonData().add(tempPerson);
+	    	//Adicionar na base de dados
+	    	System.out.println("OKEYZADO");
+	    }
 	}
 }

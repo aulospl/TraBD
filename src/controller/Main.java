@@ -7,7 +7,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.Nacao;
+import view.ModalNacaoController;
 import view.TraBDController;
 
 
@@ -15,7 +18,7 @@ public class Main extends Application{
 	
 	private DBConnection conn;
 	
-	private Stage primaryStage;
+	private static Stage primaryStage;
 	private AnchorPane root;
 	
 	public static void main(String[] args){
@@ -73,5 +76,39 @@ public class Main extends Application{
 		primaryStage.show();
 	}
 	
+	static public boolean showModalNacao(Nacao nacao) {
+	    try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(Main.class.getResource("../view/ModalNacao.fxml"));
+	        AnchorPane page = (AnchorPane) loader.load();
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        
+	        if(nacao.getNome().getName() == "")
+	        	dialogStage.setTitle("Inserir Nacao");
+	        else
+	        	dialogStage.setTitle("Editar "+nacao.getNome()+"");
+	        
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+
+	        // Set the person into the controller.
+	       ModalNacaoController controller = loader.getController();
+	        controller.setDialogStage(dialogStage);
+	      //  controller.setPerson(nacao);
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+
+	        return controller.isOkClicked();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
 	
 }

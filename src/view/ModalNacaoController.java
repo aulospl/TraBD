@@ -33,6 +33,7 @@ public class ModalNacaoController {
 	private Button buttonOK;
 	
 	private Stage dialogStage;
+	private boolean okClicked = false;
 	
 	@FXML
     private void initialize() {
@@ -42,10 +43,15 @@ public class ModalNacaoController {
         this.dialogStage = dialogStage;
     }
 	
+	public boolean isOkClicked(){
+		return okClicked;
+	}
+	
 	@FXML
 	private void handleOK(){
 		//faz as coisas
 		System.out.println("OK");
+		okClicked = true;
 		dialogStage.close();
 		
 	}
