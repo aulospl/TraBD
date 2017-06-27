@@ -49,7 +49,8 @@ CREATE TABLE NACAO(
   CONSTRAINT nacao_pk PRIMARY KEY (nome),
   CONSTRAINT fk_nacao_modalidade FOREIGN KEY (modalidade_principal)
     REFERENCES MODALIDADE(codigo),
-  CONSTRAINT num_atletas_min CHECK (num_atletas >= 0)
+  CONSTRAINT num_atletas_min CHECK (num_atletas >= 0),
+  CONSTRAINT nacao_continente CHECK (continente in ('America', 'Asia', 'Oceania', 'Africa', 'Europa'))
 );
 
 CREATE TABLE TREINADOR(
