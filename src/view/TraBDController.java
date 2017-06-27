@@ -1,5 +1,6 @@
 package view;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -94,11 +95,17 @@ public class TraBDController {
 	private void handleDeletarNacao() {
 		System.out.println("deletando");
 		Nacao nacaoSelecionada = table.getSelectionModel().getSelectedItem();
-	    boolean okClicked = Main.showModalNacao(nacaoSelecionada);
-	    if (okClicked) {
-	        //Main.getPersonData().add(tempPerson);
-	    	//Adicionar na base de dados
-	    	System.out.println("OKEYZADO");
-	    }
+		PreparedStatement ps = null;
+		try{
+			Main.conn.getCon().setAutoCommit(false);
+			table.getItems().remove(nacaoSelecionada);
+			ps = Main.conn.getCon().prepareStatement("DELETE FROM NACAO WHERE NOME = ?");
+			ps.setString(1, nacaoSelecionada.getNome().getValue());
+			ps.execute();
+			Main.conn.getCon().commit();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 }

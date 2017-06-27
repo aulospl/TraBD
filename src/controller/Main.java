@@ -16,7 +16,7 @@ import view.TraBDController;
 
 public class Main extends Application{
 	
-	private DBConnection conn;
+	public static DBConnection conn;
 	
 	private static Stage primaryStage;
 	private AnchorPane root;
