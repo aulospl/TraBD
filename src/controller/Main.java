@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -86,7 +87,7 @@ public class Main extends Application{
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
 	        
-	        if(nacao.getNome().getValue() == ""){
+	        if(Objects.equals(nacao.getNome().getValue(), "")){
 	        	dialogStage.setTitle("Inserir Nacao");
 	        }
 	        else{
