@@ -66,6 +66,10 @@ public class TraBDController {
 		System.out.println("fim loop");
 	}
 	
+	public ObservableList<Nacao> getNationData() {
+        return data;
+    }
+	
 	@FXML
 	private void handleNovaNacao() {
 		System.out.println("criando");
@@ -73,6 +77,7 @@ public class TraBDController {
 	    Nacao tempNacao = new Nacao("", "", 0, "", "", "");
 	    boolean okClicked = Main.showModalNacao(tempNacao);
 	    if (okClicked) {
+	    	getNationData().add(tempNacao);
 	        //Main.getPersonData().add(tempPerson);
 	    	//Adicionar na base de dados
 	    	System.out.println("OKEYZADO");
@@ -85,8 +90,8 @@ public class TraBDController {
 	    Nacao nacaoSelecionada = table.getSelectionModel().getSelectedItem();
 	    boolean okClicked = Main.showModalNacao(nacaoSelecionada);
 	    if (okClicked) {
-	        //Main.getPersonData().add(tempPerson);
-	    	//Adicionar na base de dados
+	        
+	    	//alterar na base de dados
 	    	System.out.println("OKEYZADO");
 	    }
 	}
@@ -108,4 +113,6 @@ public class TraBDController {
 			e.printStackTrace();
 		}
 	}
+	
+	  
 }

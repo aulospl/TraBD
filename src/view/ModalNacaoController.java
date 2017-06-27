@@ -1,5 +1,13 @@
 package view;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import controller.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -14,10 +22,14 @@ public class ModalNacaoController {
 
 	@FXML
 	private ComboBox<String> comboContinente;
-
+	private ObservableList<String> comboContinenteData = FXCollections.observableArrayList();
+	
+	
+	
 	@FXML
 	private ComboBox<String> comboModalidade;
-	
+	private ObservableList<String> comboModalidadeData = FXCollections.observableArrayList();
+
 	@FXML
 	private TextField textFieldNome;
 	
@@ -39,6 +51,35 @@ public class ModalNacaoController {
 	@FXML
     private void initialize() {
     }
+	
+	
+	public void setContinents(){
+		comboContinenteData.add(new String("Africa"));
+		comboContinenteData.add(new String("America"));
+		comboContinenteData.add(new String("Asia"));
+		comboContinenteData.add(new String("Europa"));
+		comboContinenteData.add(new String("Oceania"));
+		comboContinente.setItems(comboContinenteData);
+	}
+	
+	public void setModalidades(){
+		ArrayList<String> modalidadeData = new ArrayList<String>();
+		try {
+			Statement st = Main.conn.getCon().createStatement();
+			ResultSet res = st.executeQuery("select nome from MODALIDADE");
+			while (res.next()) {
+				modalidadeData.add(new String(res.getString(1)));
+			}
+		} catch (SQLException ex) {
+			// Dependendo de implementação, res.next() pode jogar uma exceção em vez de retornar false.
+			// Este try-catch só serve para parar o loop quando não houver mais resultados
+		}
+		for(String mod : modalidadeData){
+			comboModalidadeData.add(mod);
+		}
+		
+		comboModalidade.setItems(comboModalidadeData);
+	}
 	
 	public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;

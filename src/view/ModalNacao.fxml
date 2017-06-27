@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="320.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ModalNacaoController">
    <children>
-      <ComboBox fx:id="comboContinente" layoutX="206.0" layoutY="14.0" prefHeight="26.0" prefWidth="171.0" />
+      <ComboBox fx:id="comboContinente" layoutX="206.0" layoutY="14.0" prefHeight="26.0" prefWidth="171.0"  />
       <ComboBox fx:id="comboModalidade" layoutX="206.0" layoutY="50.0" prefHeight="26.0" prefWidth="171.0" />
       <TextField fx:id="textFieldNome" layoutX="206.0" layoutY="84.0" />
       <TextField fx:id="textFieldHino" layoutX="206.0" layoutY="119.0" />

@@ -101,9 +101,12 @@ public class Main extends Application{
 	        // Set the person into the controller.
 	       ModalNacaoController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
+	        controller.setContinents();
+	        controller.setModalidades();
 	        controller.setNacao(nacao);
 
 	        // Show the dialog and wait until the user closes it
+	       
 	        dialogStage.showAndWait();
 
 	        return controller.isOkClicked();
