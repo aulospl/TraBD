@@ -1,23 +1,19 @@
 package view;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import controller.DBConnection;
 import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 import model.Nacao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class TraBDController {
 	private ObservableList<Nacao> data;
@@ -37,6 +33,13 @@ public class TraBDController {
 	private TableColumn<Nacao, String> colHino;
 	@FXML
 	private TableColumn<Nacao, String> colBandeira;
+
+	@FXML
+	private TextField txtModalidade;
+	@FXML
+	private TextField txtMedico;
+	@FXML
+	private TextField txtTreinador;
 	
 	@FXML
 	private void initialize() {
@@ -106,5 +109,17 @@ public class TraBDController {
 		catch(SQLException e){
 			e.printStackTrace();
 		}
+	}
+
+	@FXML
+	private void handleGerarRelatorio1() {
+	    try {
+	    	int modalidade, medico;
+	    	String treinador;
+	    	modalidade = Integer.parseInt(txtModalidade.getText());
+	    	medico = Integer.parseInt(txtMedico.getText());
+	    	treinador = txtTreinador.getText();
+			Main.showModalRelatorio(modalidade, treinador, medico);
+		} catch (NumberFormatException ex) {}
 	}
 }

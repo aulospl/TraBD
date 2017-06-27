@@ -55,19 +55,23 @@ public class TabelaRelatorioAtletasController {
         colData.setCellValueFactory(cell -> cell.getValue().dataNasc);
     }
 
-    public void load(DBConnection con, int modalidade, String passaporte, int medico) throws SQLException {
+    public void load(DBConnection con, int modalidade, String treinador, int medico) throws SQLException {
         Statement st = con.createStatement();
         ResultSet res = st.executeQuery(
                 String.format("select atl.nome, atl.passaporte, trd.nacao, atl.data_nasc\n" +
                 "        from Atleta atl\n" +
                 "            join Treinador trd on atl.treinador = trd.passaporte\n" +
                 "            join Consulta cns on cns.atleta = atl.passaporte\n" +
-                "        where atl.modalidade = %d and trd.passaporte = '%s' and cns.medico = %d;", modalidade, passaporte, medico));
+                "        where atl.modalidade = %d and trd.passaporte = '%s' and cns.medico = %d", modalidade, treinador, medico));
+        System.out.println("A");
         try {
             while (res.next()) {
-                data.add(new TuplaRelatorio(res.getString(1), res.getString(2), res.getDate(3).toString(), res.getString(4)));
+                System.out.println(res.getString(1));
+                data.add(new TuplaRelatorio(res.getString(1), res.getString(2), res.getString(3), res.getDate(4).toString()));
+                System.out.println("done");
             }
         } catch (SQLException ex) {
+            ex.printStackTrace();
             // Dependendo de implementação, res.next() pode jogar uma exceção em vez de retornar false.
             // Este try-catch só serve para parar o loop quando não houver mais resultados
         }

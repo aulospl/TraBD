@@ -47,10 +47,10 @@
                            <children>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <TextField promptText="Modalidade" />
-                                    <TextField promptText="Médico" />
-                                    <TextField promptText="Treinador" />
-                                    <Button mnemonicParsing="false" text="Buscar Atletas" />
+                                    <TextField fx:id="txtModalidade" promptText="Modalidade" />
+                                    <TextField fx:id="txtMedico" promptText="Médico" />
+                                    <TextField fx:id="txtTreinador" promptText="Treinador" />
+                                    <Button mnemonicParsing="false" onAction="#handleGerarRelatorio1" text="Buscar Atletas" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="100.0" prefWidth="200.0">
