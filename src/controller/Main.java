@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Nacao;
 import view.ModalNacaoController;
+import view.TabelaRelatorioAtletasController;
 import view.TraBDController;
 
 
@@ -112,5 +113,38 @@ public class Main extends Application{
 	        return false;
 	    }
 	}
-	
+
+	static public void showModalRelatorio(int modalidade, String passaporte, int medico) {
+		try {
+			// Load the fxml file and create a new stage for the popup dialog.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../view/TabelaRelatorioAtletas.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Relatorio (1)");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			TabelaRelatorioAtletasController controller = loader.getController();
+
+			controller.load(conn, modalidade, passaporte, medico);
+			dialogStage.showAndWait();
+
+			/*
+
+			controller.setDialogStage(dialogStage);
+			controller.setNacao(nacao);
+
+			// Show the dialog and wait until the user closes it
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+			*/
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
