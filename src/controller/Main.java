@@ -86,11 +86,12 @@ public class Main extends Application{
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
 	        
-	        if(nacao.getNome().getName() == "")
+	        if(nacao.getNome().getValue() == ""){
 	        	dialogStage.setTitle("Inserir Nacao");
-	        else
-	        	dialogStage.setTitle("Editar "+nacao.getNome()+"");
-	        
+	        }
+	        else{
+	        	dialogStage.setTitle("Editar "+nacao.getNome().getValue()+"");
+	        }
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
@@ -99,7 +100,7 @@ public class Main extends Application{
 	        // Set the person into the controller.
 	       ModalNacaoController controller = loader.getController();
 	        controller.setDialogStage(dialogStage);
-	      //  controller.setPerson(nacao);
+	        controller.setNacao(nacao);
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();

@@ -8,14 +8,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Nacao;
 
 public class ModalNacaoController {
 
 	@FXML
-	private ComboBox comboContinente;
+	private ComboBox<String> comboContinente;
 
 	@FXML
-	private ComboBox comboModalidade;
+	private ComboBox<String> comboModalidade;
 	
 	@FXML
 	private TextField textFieldNome;
@@ -59,6 +60,14 @@ public class ModalNacaoController {
 	@FXML
 	private void handleCancel(){
 		dialogStage.close();
+	}
+
+	public void setNacao(Nacao nacao) {
+		this.textFieldNome.setText(nacao.getNome().getValue());
+		this.textFieldHino.setText(nacao.getHino().getValue());
+		this.textFieldBandeira.setText(nacao.getBandeira().getValue());
+		this.comboContinente.setValue(nacao.getContinente().getValue());
+		this.comboModalidade.setValue(nacao.getModalidade().getValue());
 	}
 	
 }

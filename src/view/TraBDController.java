@@ -81,8 +81,8 @@ public class TraBDController {
 	@FXML
 	private void handleEditarNacao() {
 		System.out.println("editando");
-	    Nacao tempNacao = new Nacao("", "", 0, "", "", "");
-	    boolean okClicked = Main.showModalNacao(tempNacao);
+	    Nacao nacaoSelecionada = table.getSelectionModel().getSelectedItem();
+	    boolean okClicked = Main.showModalNacao(nacaoSelecionada);
 	    if (okClicked) {
 	        //Main.getPersonData().add(tempPerson);
 	    	//Adicionar na base de dados
@@ -93,8 +93,8 @@ public class TraBDController {
 	@FXML
 	private void handleDeletarNacao() {
 		System.out.println("deletando");
-	    Nacao tempNacao = new Nacao("", "", 0, "", "", "");
-	    boolean okClicked = Main.showModalNacao(tempNacao);
+		Nacao nacaoSelecionada = table.getSelectionModel().getSelectedItem();
+	    boolean okClicked = Main.showModalNacao(nacaoSelecionada);
 	    if (okClicked) {
 	        //Main.getPersonData().add(tempPerson);
 	    	//Adicionar na base de dados
