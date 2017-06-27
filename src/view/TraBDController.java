@@ -1,15 +1,22 @@
 package view;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import controller.DBConnection;
+import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Nacao;
 
 public class TraBDController {
@@ -57,5 +64,48 @@ public class TraBDController {
 			// Este try-catch só serve para parar o loop quando não houver mais resultados
 		}
 		System.out.println("fim loop");
+	}
+	
+	@FXML
+	private void handleNovaNacao() {
+		System.out.println("criando");
+		System.out.println("chicken");
+	    Nacao tempNacao = new Nacao("", "", 0, "", "", "");
+	    boolean okClicked = Main.showModalNacao(tempNacao);
+	    if (okClicked) {
+	        //Main.getPersonData().add(tempPerson);
+	    	//Adicionar na base de dados
+	    	System.out.println("OKEYZADO");
+	    }
+	}
+	
+	@FXML
+	private void handleEditarNacao() {
+		System.out.println("editando");
+	    Nacao nacaoSelecionada = table.getSelectionModel().getSelectedItem();
+	    boolean okClicked = Main.showModalNacao(nacaoSelecionada);
+	    if (okClicked) {
+	        //Main.getPersonData().add(tempPerson);
+	    	//Adicionar na base de dados
+	    	System.out.println("OKEYZADO");
+	    }
+	}
+	
+	@FXML
+	private void handleDeletarNacao() {
+		System.out.println("deletando");
+		Nacao nacaoSelecionada = table.getSelectionModel().getSelectedItem();
+		PreparedStatement ps = null;
+		try{
+			Main.conn.getCon().setAutoCommit(false);
+			table.getItems().remove(nacaoSelecionada);
+			ps = Main.conn.getCon().prepareStatement("DELETE FROM NACAO WHERE NOME = ?");
+			ps.setString(1, nacaoSelecionada.getNome().getValue());
+			ps.execute();
+			Main.conn.getCon().commit();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
 	}
 }
