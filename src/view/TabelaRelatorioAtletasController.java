@@ -46,7 +46,6 @@ public class TabelaRelatorioAtletasController {
     @FXML
     private void initialize() {
         data = FXCollections.observableArrayList();
-
         table.setItems(data);
 
         colPassaporte.setCellValueFactory(cell -> cell.getValue().passaporte);

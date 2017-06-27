@@ -40,6 +40,11 @@ public class TraBDController {
 	private TextField txtMedico;
 	@FXML
 	private TextField txtTreinador;
+
+	@FXML
+	private TextField txtNumAtletas;
+	@FXML
+	private TextField txtNacao;
 	
 	@FXML
 	private void initialize() {
@@ -119,7 +124,19 @@ public class TraBDController {
 	    	modalidade = Integer.parseInt(txtModalidade.getText());
 	    	medico = Integer.parseInt(txtMedico.getText());
 	    	treinador = txtTreinador.getText();
-			Main.showModalRelatorio(modalidade, treinador, medico);
+			Main.showModalRelatorio1(modalidade, treinador, medico);
+		} catch (NumberFormatException ex) {}
+	}
+
+	@FXML
+	private void handleGerarRelatorio2() {
+		try {
+			int num;
+			String nacao;
+
+			num = Integer.parseInt(txtNumAtletas.getText());
+			nacao = txtNacao.getText();
+			Main.showModalRelatorio2(num, nacao);
 		} catch (NumberFormatException ex) {}
 	}
 }

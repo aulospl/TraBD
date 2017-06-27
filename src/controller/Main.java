@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import model.Nacao;
 import view.ModalNacaoController;
 import view.TabelaRelatorioAtletasController;
+import view.TabelaRelatorioMedicosController;
 import view.TraBDController;
 
 
@@ -114,7 +115,7 @@ public class Main extends Application{
 	    }
 	}
 
-	static public void showModalRelatorio(int modalidade, String passaporte, int medico) {
+	static public void showModalRelatorio1(int modalidade, String passaporte, int medico) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
@@ -131,20 +132,30 @@ public class Main extends Application{
 
 			controller.load(conn, modalidade, passaporte, medico);
 			dialogStage.showAndWait();
-
-			/*
-
-			controller.setDialogStage(dialogStage);
-			controller.setNacao(nacao);
-
-			// Show the dialog and wait until the user closes it
-			dialogStage.showAndWait();
-
-			return controller.isOkClicked();
-			*/
 		} catch (IOException | SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
+	static public void showModalRelatorio2(int num, String nacao) {
+		try {
+			// Load the fxml file and create a new stage for the popup dialog.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("../view/TabelaRelatorioMedicos.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Relatorio (2)");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			TabelaRelatorioMedicosController controller = loader.getController();
+
+			controller.load(conn, num, nacao);
+			dialogStage.showAndWait();
+		} catch (IOException | SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
