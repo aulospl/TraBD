@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="320.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ModalNacaoController">
+<AnchorPane prefHeight="320.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ModalNacaoController">
    <children>
       <ComboBox fx:id="comboContinente" layoutX="206.0" layoutY="14.0" prefHeight="26.0" prefWidth="171.0" />
       <ComboBox fx:id="comboModalidade" layoutX="206.0" layoutY="50.0" prefHeight="26.0" prefWidth="171.0" />
@@ -18,7 +18,7 @@
       <Label layoutX="14.0" layoutY="55.0" text="Modalidade Principal" />
       <Label layoutX="14.0" layoutY="89.0" text="Nome" />
       <Label layoutX="14.0" layoutY="124.0" text="Hino" />
-      <Label layoutX="14.0" layoutY="152.0" text="Bandeira" />
+      <Label layoutX="15.0" layoutY="160.0" text="Bandeira" />
       <TextField fx:id="textFieldBandeira" layoutX="206.0" layoutY="155.0" />
    </children>
 </AnchorPane>
