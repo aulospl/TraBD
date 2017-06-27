@@ -63,7 +63,6 @@ public class TraBDController {
 			// Dependendo de implementação, res.next() pode jogar uma exceção em vez de retornar false.
 			// Este try-catch só serve para parar o loop quando não houver mais resultados
 		}
-		System.out.println("fim loop");
 	}
 	
 	@FXML
