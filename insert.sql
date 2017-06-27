@@ -13,7 +13,6 @@ INSERT INTO TREINADOR (passaporte, data_nasc, nome, sexo, nacao, estado, cidade,
 INSERT INTO TREINADOR (passaporte, data_nasc, nome, sexo, nacao, estado, cidade, telefone_1, telefone_2, email, senha)
     VALUES ('89023EUL', TO_DATE('1977/03/23', 'yyyy/mm/dd'), 'Susilo Suparman Bambang', 'm', 'Indonesia', 'Java', 'Jakarta', '+62 93663-2811', '+62 283921-42', 'suparman@gmail.com', 'BaMbAnG');
 
-
 INSERT INTO ATLETA (passaporte, data_nasc, nome, sexo, altura, peso, cpf, treinador, modalidade)
     VALUES ('09876543', TO_DATE('1990/05/21', 'yyyy/mm/dd'), 'Eduardo Marques do Vale', 'm', 1.74, 80.3, '000.000.000-11', '00100B90', 1);
 INSERT INTO ATLETA (passaporte, data_nasc, nome, sexo, altura, peso, treinador, modalidade)
@@ -80,3 +79,45 @@ INSERT INTO TRATAMENTO (codigo, descricao, consulta)
     VALUES (2, 'Beber muito líquido não alcoólico', 2);
 INSERT INTO TRATAMENTO (codigo, descricao, consulta)
     VALUES (3, 'Descansar 30min de manhã antes do treino', 3);
+    
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('09876543', '00100B90', TO_DATE('2017/05/19', 'yyyy/mm/dd'));
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('09876543', '00100B90', TO_DATE('2017/05/20', 'yyyy/mm/dd'));
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('09876543', '00100B90', TO_DATE('2017/05/21', 'yyyy/mm/dd'));
+
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('12345678', '383498JK', TO_DATE('2017/05/19', 'yyyy/mm/dd'));
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('12345678', '383498JK', TO_DATE('2017/05/20', 'yyyy/mm/dd'));
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('12345678', '383498JK', TO_DATE('2017/05/21', 'yyyy/mm/dd'));
+
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('00110022', '89023EUL', TO_DATE('2017/05/19', 'yyyy/mm/dd'));
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('00110022', '89023EUL', TO_DATE('2017/05/20', 'yyyy/mm/dd'));
+INSERT INTO ROTINA (atleta, treinador, data_rotina)
+    VALUES ('00110022', '89023EUL', TO_DATE('2017/05/21', 'yyyy/mm/dd'));
+    
+INSERT INTO PREPARO (atleta, treinador, data_rotina, descricao)
+    VALUES ('09876543', '00100B90', TO_DATE('2017/05/19', 'yyyy/mm/dd'), 'Preparo do campo');
+INSERT INTO PREPARO (atleta, treinador, data_rotina, descricao)
+    VALUES ('12345678', '383498JK', TO_DATE('2017/05/19', 'yyyy/mm/dd'), 'Polimento dos remos');
+INSERT INTO PREPARO (atleta, treinador, data_rotina, descricao)
+    VALUES ('00110022', '89023EUL', TO_DATE('2017/05/19', 'yyyy/mm/dd'), 'Organização dos equipamentos');
+    
+INSERT INTO TREINO (atleta, treinador, data_rotina, descricao)
+    VALUES ('09876543', '00100B90', TO_DATE('2017/05/20', 'yyyy/mm/dd'), 'Treinamento de tiro de meta');
+INSERT INTO TREINO (atleta, treinador, data_rotina, descricao)
+    VALUES ('12345678', '383498JK', TO_DATE('2017/05/20', 'yyyy/mm/dd'), 'Remar em voltas');
+INSERT INTO TREINO (atleta, treinador, data_rotina, descricao)
+    VALUES ('00110022', '89023EUL', TO_DATE('2017/05/20', 'yyyy/mm/dd'), 'Realizar o circuito para prática');
+
+INSERT INTO RECUPERACAO (atleta, treinador, data_rotina, descricao)
+    VALUES ('09876543', '00100B90', TO_DATE('2017/05/21', 'yyyy/mm/dd'), 'Dormir até meio dia');
+INSERT INTO RECUPERACAO (atleta, treinador, data_rotina, descricao)
+    VALUES ('12345678', '383498JK', TO_DATE('2017/05/21', 'yyyy/mm/dd'), 'Dormir 8h');
+INSERT INTO RECUPERACAO (atleta, treinador, data_rotina, descricao)
+    VALUES ('00110022', '89023EUL', TO_DATE('2017/05/21', 'yyyy/mm/dd'), 'Dormir 12h');
