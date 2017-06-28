@@ -1,23 +1,19 @@
 package view;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import controller.DBConnection;
 import controller.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 import model.Nacao;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class TraBDController {
 	private ObservableList<Nacao> data;
@@ -37,6 +33,18 @@ public class TraBDController {
 	private TableColumn<Nacao, String> colHino;
 	@FXML
 	private TableColumn<Nacao, String> colBandeira;
+
+	@FXML
+	private TextField txtModalidade;
+	@FXML
+	private TextField txtMedico;
+	@FXML
+	private TextField txtTreinador;
+
+	@FXML
+	private TextField txtNumAtletas;
+	@FXML
+	private TextField txtNacao;
 	
 	@FXML
 	private void initialize() {
@@ -63,7 +71,6 @@ public class TraBDController {
 			// Dependendo de implementação, res.next() pode jogar uma exceção em vez de retornar false.
 			// Este try-catch só serve para parar o loop quando não houver mais resultados
 		}
-		System.out.println("fim loop");
 	}
 	
 	public ObservableList<Nacao> getNationData() {
@@ -72,33 +79,27 @@ public class TraBDController {
 	
 	@FXML
 	private void handleNovaNacao() {
-		System.out.println("criando");
-		System.out.println("chicken");
 	    Nacao tempNacao = new Nacao("", "", 0, "", "", "");
 	    boolean okClicked = Main.showModalNacao(tempNacao);
 	    if (okClicked) {
 	    	getNationData().add(tempNacao);
 	        //Main.getPersonData().add(tempPerson);
 	    	//Adicionar na base de dados
-	    	System.out.println("OKEYZADO");
 	    }
 	}
 	
 	@FXML
 	private void handleEditarNacao() {
-		System.out.println("editando");
 	    Nacao nacaoSelecionada = table.getSelectionModel().getSelectedItem();
 	    boolean okClicked = Main.showModalNacao(nacaoSelecionada);
 	    if (okClicked) {
 	        
 	    	//alterar na base de dados
-	    	System.out.println("OKEYZADO");
 	    }
 	}
 	
 	@FXML
 	private void handleDeletarNacao() {
-		System.out.println("deletando");
 		Nacao nacaoSelecionada = table.getSelectionModel().getSelectedItem();
 		PreparedStatement ps = null;
 		try{
@@ -113,6 +114,28 @@ public class TraBDController {
 			e.printStackTrace();
 		}
 	}
-	
-	  
+
+	@FXML
+	private void handleGerarRelatorio1() {
+	    try {
+	    	int modalidade, medico;
+	    	String treinador;
+	    	modalidade = Integer.parseInt(txtModalidade.getText());
+	    	medico = Integer.parseInt(txtMedico.getText());
+	    	treinador = txtTreinador.getText();
+			Main.showModalRelatorio1(modalidade, treinador, medico);
+		} catch (NumberFormatException ex) {}
+	}
+
+	@FXML
+	private void handleGerarRelatorio2() {
+		try {
+			int num;
+			String nacao;
+
+			num = Integer.parseInt(txtNumAtletas.getText());
+			nacao = txtNacao.getText();
+			Main.showModalRelatorio2(num, nacao);
+		} catch (NumberFormatException ex) {}
+	}
 }

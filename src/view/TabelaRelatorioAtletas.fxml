@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TabelaRelatorioAtletasController">
+   <children>
+      <TableView fx:id="table" layoutX="75.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="colPassaporte" prefWidth="119.0" text="Passaporte" />
+          <TableColumn fx:id="colNome" minWidth="5.0" prefWidth="256.0" text="Atleta" />
+            <TableColumn fx:id="colNacao" prefWidth="139.0" text="Nação" />
+            <TableColumn fx:id="colData" prefWidth="172.0" text="Data de Nascimento" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

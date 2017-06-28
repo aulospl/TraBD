@@ -92,7 +92,6 @@ public class ModalNacaoController {
 	@FXML
 	private void handleOK(){
 		//faz as coisas
-		System.out.println("OK");
 		okClicked = true;
 		dialogStage.close();
 		
